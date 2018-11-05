@@ -37,4 +37,3 @@ def deal_data_single(bsobj):
         print_f(records)
     return data
 
-fuck_data()
