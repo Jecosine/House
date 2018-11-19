@@ -1,6 +1,5 @@
 from urllib import urlopen
 from bs4 import BeautifulSoup as bs
-from Untitled import print_f
 import requests
 #from get_ip import get_pool
 
