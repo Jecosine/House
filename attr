@@ -1,0 +1,18 @@
+# Fields
+
+location	varchar(30)
+
+area		int()
+
+decade		int()
+
+direction	varchar(18)
+
+address		varchar(150)
+
+price		int
+
+//specials field is set up for the attributes of education or subway
+education	varchar(5)
+	
+subway		int()
