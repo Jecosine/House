@@ -1,6 +1,8 @@
 from urllib import urlopen
 from bs4 import BeautifulSoup as bs
 import requests
+import os
+
 
 header = {
     'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
@@ -35,7 +37,27 @@ def testIP(iplist):
             if html.status_code == 200:
                 print 'success'
                 realpool.append(ip)
-            
-    print len(realpool)
+    return realpool
+def get_pool():
+    ip_pool = []
+    temp = []
+    if (os.path.exists("ip_pool.txt")):
+        f = open('ip_pool.txt','rb')
+        content = f.read()
+        content = content.split('\n')
+        for i in content:
+            print i
+            temp = [i.split(' ')[0],i.split(' ')[1]]
+            ip_pool.append(temp)
+    else:
+        f = open("ip_pool.txt",'wb')
+        content = ""
+        ip_pool = testIP(getIP())
+        for i in ip_pool:
+            content += str(i.keys()[0])+' '+str(i.values()[0])+'\n'
+        f.write(content)
+        f.close()
 
-testIP(getIP())
+    return ip_pool 
+
+get_pool()
